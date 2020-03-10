@@ -22,4 +22,8 @@ public class UserService {
 	public int addUser(User user) {
 		return userDao.addUser(user);
 	}
+	
+	public User findByIdAndPsw(String userId, String userPsw) {
+		return userDao.findByIdAndPsw(userId,userPsw);
+	}
 }

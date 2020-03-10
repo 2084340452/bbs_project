@@ -64,4 +64,30 @@ public class UserDao {
 		}
 		return 0;
 	}
+	
+	
+		public  User findByIdAndPsw(String userId,String userPsw) {
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			User result = null;
+			try {
+				conn = BaseDao.getCon();
+				String sql = "select * from bbs_user "
+						+ "where userId=? and userPsw=?";
+				ps = conn.prepareStatement(sql);
+				rs = BaseDao.query(ps, new Object[] {userId,userPsw});
+				if(rs.next()) {
+					result = new User(rs.getString("userId"), rs.getString("userPsw"),rs.getString("userAlice"),
+							rs.getString("userEmail"),rs.getString("userSex"),rs.getString("userPhoto"), rs.getDouble("userScore"),rs.getInt("userLevel"),
+							rs.getDate("levelDown"),rs.getDate("userLock"),rs.getDate("userCreateDate"));
+				}
+			} catch (Exception e) {e.printStackTrace();
+			} finally {
+				try {
+					BaseDao.close(conn, ps, rs);
+				} catch (Exception e2) {e2.printStackTrace();}
+			}
+			return result;
+		}
 }
