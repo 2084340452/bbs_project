@@ -1,6 +1,7 @@
 package com.bbs.service;
 
 import com.bbs.dao.UserDao;
+import com.bbs.pojo.Plate;
 import com.bbs.pojo.User;
 
 public class UserService {
@@ -22,8 +23,22 @@ public class UserService {
 	public int addUser(User user) {
 		return userDao.addUser(user);
 	}
+	/**
+	 * 根据账户和密码查找对应账户
+	 * @param userId
+	 * @param userPsw
+	 * @return 找到返回账户 失败返回null
+	 */
+	public User findUserByIdAndPsw(String userId,String userPsw) {
+		return userDao.findUserByIdAndPsw(userId, userPsw);
+	}
 	
-	public User findByIdAndPsw(String userId, String userPsw) {
-		return userDao.findByIdAndPsw(userId,userPsw);
+	/**
+	 * 把板块存入数据库中
+	 * @param user
+	 * @return 0-失败 1-成功
+	 */
+	public int addPlate(Plate plate) {
+		return userDao.addPlate(plate);
 	}
 }

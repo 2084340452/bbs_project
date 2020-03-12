@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-<title>注册</title>
+<title>管理员页面</title>
 <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" />
-
+<script src="${pageContext.request.contextPath}/statices/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/static/js/plugins/spinner/ui.spinner.js"></script>
@@ -62,37 +63,46 @@
 <body>
 
 <!-- Left side content -->
-<%@ include file="user_left_side.jsp" %>
+<%@ include file="admin_left_side.jsp" %>
+
+<!-- Right side -->
+<div id="rightSide">
+
+	<%@ include file="admin_top_nav.jsp" %>
+    
+    <!-- Page statistics area -->
+    <div class="statsRow">
+        <div class="wrapper">
+        	<div class="controlB">
+            	<ul>
+            		<li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/control/32/database.png" alt="" /><span>板块管理</span></a></li>
+                	<li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/control/32/plus.png" alt="" /><span>Add new session</span></a></li>
+                    <li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/control/32/hire-me.png" alt="" /><span>Add new user</span></a></li>
+                    <li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/control/32/statistics.png" alt="" /><span>Check statistics</span></a></li>
+                    <li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/control/32/comment.png" alt="" /><span>Review comments</span></a></li>
+                    <li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/control/32/order-149.png" alt="" /><span>Check orders</span></a></li>
+                </ul>
+                <div class="clear"></div>
+              
 
 
 <!-- Right side -->
 <div id="rightSide">
 
-    <!-- Top fixed navigation -->
-    <div class="topNav">
-        <div class="wrapper">
-            <div class="userNav">
-                <ul>
-                    <li><a href="${pageContext.request.contextPath}/index.jsp" title=""><img src="${pageContext.request.contextPath}/static/images/icons/topnav/logout.png" alt="" /><span>回到首页</span></a></li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
     
     <!-- Responsive header -->
     <div class="resp">
         <div class="respHead">
-            <a href="index.html" title=""><img src="${pageContext.request.contextPath}/static/images/loginLogo.png" alt="" /></a>
+            <a href="index.html" title=""><img src="images/loginLogo.png" alt="" /></a>
         </div>
         
         <div class="cLine"></div>
         <div class="smalldd">
-            <span class="goTo"><img src="${pageContext.request.contextPath}/static/images/icons/light/alert.png" alt="" />Validation engine</span>
+            <span class="goTo"><img src="images/icons/light/pencil.png" alt="" />Form elements</span>
             <ul class="smallDropdown">
-                <li><a href="index.html" title=""><img src="${pageContext.request.contextPath}/static/images/icons/light/home.png" alt="" />Dashboard</a></li>
-                <li><a href="charts.html" title=""><img src="${pageContext.request.contextPath}/static/images/icons/light/stats.png" alt="" />Statistics and charts</a></li>
-                <li><a href="#" title="" class="exp"><img src="${pageContext.request.contextPath}/static/images/icons/light/pencil.png" alt="" />Forms stuff<strong>4</strong></a>
+                <li><a href="index.html" title=""><img src="images/icons/light/home.png" alt="" />Dashboard</a></li>
+                <li><a href="charts.html" title=""><img src="images/icons/light/stats.png" alt="" />Statistics and charts</a></li>
+                <li><a href="#" title="" class="exp"><img src="images/icons/light/pencil.png" alt="" />Forms stuff<strong>4</strong></a>
                     <ul>
                         <li><a href="forms.html" title="">Form elements</a></li>
                         <li><a href="form_validation.html" title="">Validation</a></li>
@@ -100,21 +110,21 @@
                         <li class="last"><a href="form_wizards.html" title="">Wizards</a></li>
                     </ul>
                 </li>
-                <li><a href="ui_elements.html" title=""><img src="${pageContext.request.contextPath}/static/images/icons/light/users.png" alt="" />Interface elements</a></li>
-                <li><a href="tables.html" title="" class="exp"><img src="${pageContext.request.contextPath}/static/images/icons/light/frames.png" alt="" />Tables<strong>3</strong></a>
+                <li><a href="ui_elements.html" title=""><img src="images/icons/light/users.png" alt="" />Interface elements</a></li>
+                <li><a href="tables.html" title="" class="exp"><img src="images/icons/light/frames.png" alt="" />Tables<strong>3</strong></a>
                     <ul>
                         <li><a href="table_static.html" title="">Static tables</a></li>
                         <li><a href="table_dynamic.html" title="">Dynamic table</a></li>
                         <li class="last"><a href="table_sortable_resizable.html" title="">Sortable &amp; resizable tables</a></li>
                     </ul>
                 </li>
-                <li><a href="#" title="" class="exp"><img src="${pageContext.request.contextPath}/static/images/icons/light/fullscreen.png" alt="" />Widgets and grid<strong>2</strong></a>
+                <li><a href="#" title="" class="exp"><img src="images/icons/light/fullscreen.png" alt="" />Widgets and grid<strong>2</strong></a>
                     <ul>
                         <li><a href="widgets.html" title="">Widgets</a></li>
                         <li class="last"><a href="grid.html" title="">Grid</a></li>
                     </ul>
                 </li>
-                <li><a href="#" title="" class="exp"><img src="${pageContext.request.contextPath}/static/images/icons/light/alert.png" alt="" />Error pages<strong>6</strong></a>
+                <li><a href="#" title="" class="exp"><img src="images/icons/light/alert.png" alt="" />Error pages<strong>6</strong></a>
                     <ul class="sub">
                         <li><a href="403.html" title="">403 page</a></li>
                         <li><a href="404.html" title="">404 page</a></li>
@@ -124,8 +134,8 @@
                         <li class="last"><a href="offline.html" title="">Website is offline</a></li>
                     </ul>
                 </li>
-                <li><a href="file_manager.html" title=""><img src="${pageContext.request.contextPath}/static/images/icons/light/files.png" alt="" />File manager</a></li>
-                <li><a href="#" title="" class="exp"><img src="${pageContext.request.contextPath}/static/images/icons/light/create.png" alt="" />Other pages<strong>3</strong></a>
+                <li><a href="file_manager.html" title=""><img src="images/icons/light/files.png" alt="" />File manager</a></li>
+                <li><a href="#" title="" class="exp"><img src="images/icons/light/create.png" alt="" />Other pages<strong>3</strong></a>
                     <ul>
                         <li><a href="typography.html" title="">Typography</a></li>
                         <li><a href="calendar.html" title="">Calendar</a></li>
@@ -137,49 +147,48 @@
         <div class="cLine"></div>
     </div>
     
+    
+    
+    <div class="line"></div>
+    
+
+    
+    
     <!-- Main content wrapper -->
     <div class="wrapper">
+    
+  
         
-        <!-- Validation form -->
-        <form id="validate" class="form" method="post" action="${pageContext.request.contextPath}/register">
-        	<fieldset>
+        <!-- Form -->
+        <form action="" class="form" enctype="multipart/form-data">
+            <fieldset>
                 <div class="widget">
-                    <div class="title" style="color:red;"><img src="${pageContext.request.contextPath}/static/images/icons/dark/alert.png" alt="" class="titleIcon" /><h6 style="color:red;">${empty message?'请注册':message}</h6></div>
                     <div class="formRow">
-                        <label>账户:<span class="req">*</span></label>
-                        <div class="formRight"><input type="text" class="validate[required]" name="userId" id="req"/></div><div class="clear"></div>
+                        <label>板块名称:</label>
+                        <div class="formRight"><input type="text" value="" name="plateTitle" /></div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="formRow">
-                        <label>密码:<span class="req">*</span></label>
-                        <div class="formRight"><input type="password" class="validate[required]" name="userPsw" id="password1" /></div><div class="clear"></div>
+                <div class="formRow">
+                        <label>板块描述:</label>
+                        <div class="formRight"><textarea rows="8" cols="" name="plateMessage"></textarea></div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="formRow">
-                        <label>确认密码:<span class="req">*</span></label>
-                        <div class="formRight"><input type="password" class="validate[required,equals[password1]]" name="rePassword" id="password2" /></div><div class="clear"></div>
+                   
+                 <div class="formRow">
+                        <div class="formRight"><input type="submit" value="添加"  /></div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="formRow">
-                        <label>昵称:<span class="req">*</span></label>
-                        <div class="formRight"><input type="text" class="validate[required]" name="userAlice" id="minValid"/></div><div class="clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>邮箱:<span class="req">*</span></label>
-                        <div class="formRight"><input type="text" value="" class="validate[required,custom[email]]" name="userEmail" id="emailValid"/></div><div class="clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>性别:<span class="req">*</span></label>
-                        <div class="formRight">
-                            <div class="floatL" style="margin: 2px 0 0 0;"><input type="radio" value="男" id="radioReq1" name="userSex" checked="checked" data-prompt-position="topRight:102" /><label for="radioReq1">男</label></div>
-                        	<div class="floatL" style="margin: 2px 0 0 0;"><input type="radio" value="女" id="radioReq2" name="userSex" data-prompt-position="topRight:102" /><label for="radioReq2">女</label></div>
-                        </div><div class="clear"></div>
-                    </div>
-                    <div class="formSubmit"><input type="submit" value="注册" class="redB" /></div>
-                    
-                    <div class="clear"></div>
                 </div>
-                
             </fieldset>
-        </form>       
-        
+            
+            
+         
+        </form>
+            
+    </div>
+                
+            </div>
+        </div>
     </div>
     
     <!-- Footer line -->
@@ -190,7 +199,38 @@
 </div>
 
 <div class="clear"></div>
+<script>
+$(function(){
+	
 
+	$("form").submit(function(){	
+		var formData = new FormData();
+		var plateTitle = $('[name="plateTitle"]').val();
+		var plateMessage = $('[name="plateMessage"]').val();
+		// 把数据加入到FormData对象中
+			// 第一个参数是参数名，第二个是值
+		formData.append("plateTitle",plateTitle);
+		formData.append("plateMessage",plateMessage);
+		// 执行异步请求
+		$.ajax("${pageContext.request.contextPath}/add_plate",{ // URL
+			type:"POST", // 请求方式为POST
+			data:formData, // 提交的数据
+			processData:false,// 告诉jQuery要传输formData对象
+			contentType:false,// 告诉jQuery不需要添加请求头对于Content-Type的设置
+			success:function(x){	// 请求成功
+				alert("成功");// msg就是Msg类型的属性名
+			},
+			error:function(){		// 请求失败
+				alert("失败");
+			},
+			dataType:"json"
+		});
+		// 为了避免刷新页面，返回false(表示不提交)
+		return false;
+}
+	</script>
 </body>
+
 </html>
+
     

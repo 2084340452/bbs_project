@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,42 +69,13 @@
 <body>
 
 <!-- Left side content -->
-<div id="leftSide">
-    <div class="logo"><a href="index.html"><img src="${pageContext.request.contextPath}/static/images/logo.png" alt="" /></a></div>
-    
-    <div class="sidebarSep mt0"></div>
-    
-    <!-- Search widget -->
-    <form action="" class="sidebarSearch">
-        <input type="text" name="search" placeholder="search..." id="ac" />
-        <input type="submit" value="" />
-    </form>
-    
-    <div class="sidebarSep"></div>
-    
-    <!-- Left navigation -->
-    <ul id="menu" class="nav">
-        <li class="dash"><a href="index.html" title="" class="active"><span>Dashboard</span></a></li>
-    </ul>
-</div>
-
+<%@ include file="user_left_side.jsp" %>
 
 <!-- Right side -->
 <div id="rightSide">
 
     <!-- Top fixed navigation -->
-    <div class="topNav">
-        <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/userPic.png" alt="" /></a><span>${empty error?'游客':error}</span></div>
-            <div class="userNav">
-                <ul>
-                    <li><a href="#" title=""><img src="${pageContext.request.contextPath}/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/login.jsp" title=""><img src="${pageContext.request.contextPath}/static/images/icons/topnav/logout.png" alt="" /><span>登出</span></a></li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
+    <%@ include file="user_top_nav.jsp" %>
     
     <!-- Responsive header -->
     <div class="resp">
